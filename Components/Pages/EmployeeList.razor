@@ -221,7 +221,7 @@
             <MudNavLink Match="NavLinkMatch.All" Href="/salesman-schedule">Salesman Schedule</MudNavLink>
         </MudNavMenu>
     </MudDrawer>
-    <MudMainContent>
+    <MudMainContent Style="overflow-x:auto; height:855;">
         <MudGrid>
                     
             <MudItem xs="12">
@@ -234,10 +234,7 @@
                 }
                 else
                 {
-                    <div class="w-100">
-                        <SearchBox Items="EmpObj" OnSearch="UpdateFilteredEmployee"></SearchBox>
-                    </div>
-                    <MudSimpleTable Style="overflow-x:auto" Bordered Striped Hover="true" Class="table-data">
+                    <MudSimpleTable Style="overflow-x:auto;" Bordered Striped Hover="true" Class="table-data">
                         <thead>
                             <MudTr>
                                 <MudTh Style=" padding:10px; text-align:center;">Employee No</MudTh>

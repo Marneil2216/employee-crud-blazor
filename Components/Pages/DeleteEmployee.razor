@@ -8,54 +8,42 @@
 @using MudBlazor.Dialog
 @inject IDialogService DialogService
 
-
-<style>
-    .delete-employee-btn {
-        background-color: #ff3333;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        padding: 8px 32px;
-    }
-    .delete-employee-btn:hover{
-            box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    }
-
-    .cancel-employee-btn {
-        background-color: #1a75ff;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        padding: 8px 32px;
-    }
-    .cancel-employee-btn:hover{
-            box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    }
-    .button-below{
-        margin-top:10px;
-    }
-
-</style>
-
-<MudText Typo="Typo.h4">Employee</MudText>
-<hr />
-
-<form>
-    <div class="row">
-        <div class="col-md-8">
-            <table class="table table-bordered table-striped mb-0">
-                <thead class="table-header">
-                    <tr>
-                        <th>Employee No</th>
-                        <th>Employee Name</th>
-                        <th>Address</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Designation</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        <tr> 
+<MudLayout>
+    <MudAppBar Elevation="1" Class="NavBar">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
+        <MudInputLabel>Delete Employee Record</MudInputLabel>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.Home" Href="/" Color="Color.Inherit" />
+        <MudIconButton Icon="@Icons.Material.Filled.AccountCircle" Color="Color.Inherit" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="@open" Elevation="1" Class="SideBar">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Delete Employee Record</MudText>
+        </MudDrawerHeader>
+        <MudNavMenu>
+            <MudNavLink Match="NavLinkMatch.All" Href="/">Home</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="/Employees">List Of Employee</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="/driver-schedule">Driver's Schedule</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="/salesman-schedule">Salesman Schedule</MudNavLink>
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent>
+        <MudGrid>
+            <MudItem xs="2"></MudItem>
+            <MudItem xs="8">
+                <table class="table table-bordered table-striped mb-0">
+                    <thead class="table-header">
+                        <tr>
+                            <th>Employee No</th>
+                            <th>Employee Name</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Designation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
                             <td>@obj.Id</td>
                             <td>@obj.FullName</td>
                             <td>@obj.Address</td>
@@ -63,40 +51,16 @@
                             <td>@obj.PhoneNumber</td>
                             <td>@obj.Designation</td>
                         </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="row">
-        <div class="button-below">
-            <MudButton @onclick="DeleteEmployeeRecord" Variant="Variant.Filled" Color="Color.Error">Delete Records</MudButton>
-            @* <input type="button" class="delete-employee-btn" @onclick="@DeleteEmployeeRecord" value="Delete" /> *@
-            <input type="button" class="cancel-employee-btn" @onclick="@Cancel" value="Cancel" />
-        </div>
-    </div>
-</form>
-
-
-@code {
-
-    [Parameter]
-    public string Id { get; set; }
-    Employee obj = new Employee();
-
-    protected override async Task OnInitializedAsync()
-    {
-        obj = await Task.Run(() => employeeService.GetEmployeeById(Convert.ToInt32(Id)));
-    }
-    protected async void DeleteEmployeeRecord()
-    {
-        await employeeService.DeleteEmployeeData(obj);
-        NavigationManager.NavigateTo("Employees");
-    }
-    protected async void Cancel()
-    {
-        NavigationManager.NavigateTo("Employees");
-    }
-
-  
-
-}
+                    </tbody>
+                </table>
+            </MudItem>
+            <MudItem xs="2"></MudItem>
+            <MudGrid>
+                <div class="button-below">
+                    <MudButton @onclick="DeleteEmployeeRecord" Variant="Variant.Filled" Color="Color.Error">Delete Records</MudButton>
+                    <input type="button" class="cancel-employee-btn" @onclick="@Cancel" value="Cancel" />
+                </div>
+            </MudGrid>
+        </MudGrid>
+    </MudMainContent>
+</MudLayout>

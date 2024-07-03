@@ -1,0 +1,35 @@
+﻿.delete-employee-btn {
+    background-color: #ff3333;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 32px;
+}
+
+    .delete-employee-btn:hover {
+        box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+.cancel-employee-btn {
+    background-color: #1a75ff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 32px;
+    margin-left: 10px;
+}
+
+    .cancel-employee-btn:hover {
+        box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+.button-below {
+    margin: 30px auto;
+    display:flex;
+    justify-content: space-around;
+    align-items:center;
+}
+
+table {
+    margin: 30px auto;
+}

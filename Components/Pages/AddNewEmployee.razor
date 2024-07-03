@@ -5,164 +5,73 @@
 @inject NavigationManager NavigationManager 
 @inject ISnackbar Snackbar
 
-<style>
-
-    .addemployee-save-btn{
-        background-color: #005ce6;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        padding: 8px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        -webkit-transition-duration: 0.4s; /* Safari */
-        transition-duration: 0.4s;
-    }
-    .addemployee-save-btn:hover{
-            box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    }
-
-    .addemployee-cancel-btn{
-        background-color: #ff3333;
-        border: none;
-        border-radius: 5px;
-        color: white;
-        padding: 8px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        -webkit-transition-duration: 0.4s; /* Safari */
-        transition-duration: 0.4s;
-    }
-    .addemployee-cancel-btn:hover{
-            box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    }
-    .button-below{
-        margin-top:10px;
-    }
-
-    .flex-1 {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .flex-2 {
-        display: flex;
-        justify-content: space-between;
-        margin-top:5px;
-    }
-
-</style>
-
-
-<MudText Typo="Typo.h4">Add New Employee</MudText>
-<hr />
-
-<MudGrid Style="margin:0px 10px 0px;">
-    <MudGrid Style="margin-bottom:10px;">
-        <MudItem xs="3">
-            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-        </MudItem>
-        <MudItem xs="3">
-            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-        </MudItem>
-        <MudItem xs="3">
-            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-        </MudItem>
-        <MudItem xs="3">
-            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-        </MudItem>
-    </MudGrid>
-    <MudGrid>
-        <MudItem xs="3">
-            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-        </MudItem>
-        <MudItem xs="3">
-            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-        </MudItem>
-        <MudItem xs="3">
-            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-        </MudItem>
-        <MudItem xs="3">
-            <MudPaper Class="d-flex align-center justify-center mud-width-full py-8">xs=3</MudPaper>
-        </MudItem>
-    </MudGrid>
-</MudGrid>
-
-
-
-<form>
-    <div class="row">
-        <div class="col-md-8 ">
-            <div class="flex-1">
-                <div class="for-group">
+<MudLayout>
+    <MudAppBar Elevation="1" Class="NavBar">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
+        <MudInputLabel>Add New Employee</MudInputLabel>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.Home" Href="/" Color="Color.Inherit" />
+        <MudIconButton Icon="@Icons.Material.Filled.AccountCircle" Color="Color.Inherit" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="@open" Elevation="1" Class="SideBar">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Add New Employee</MudText>
+        </MudDrawerHeader>
+        <MudNavMenu>
+            <MudNavLink Match="NavLinkMatch.All" Href="/">Home</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="/Employees">List Of Employee</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="/driver-schedule">Driver's Schedule</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="/salesman-schedule">Salesman Schedule</MudNavLink>
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent>
+        <MudGrid Style="margin:30px 0px 0px;">
+            <MudGrid Style="margin-bottom:10px;">
+                <MudItem xs="2"></MudItem>
+                <MudItem xs="2">
                     <label for="FirstName" class="control-label">First Name</label>
                     <input form="FirstName" class="form-control" @bind="@obj.FirstName" />
-                </div>
-                <div class="for-group">
+                </MudItem>
+                <MudItem xs="2">
                     <label for="MiddleName" class="control-label">Middle Name</label>
                     <input form="MiddleName" class="form-control" @bind="@obj.MiddleName" />
-                </div>
-                <div class="for-group">
+                </MudItem>
+                <MudItem xs="2">
                     <label for="LastName" class="control-label">Last Name</label>
                     <input form="LastName" class="form-control" @bind="@obj.LastName" />
-                </div>
-                <div class="for-group">
+                </MudItem>
+                <MudItem xs="2">
                     <label for="PostalCode" class="control-label">Postal Code</label>
                     <input form="PostalCode" class="form-control" @bind="@obj.PostalCode" />
-                </div>
-            </div>
-            <div class="flex-2">
-                <div class="for-group">
+                </MudItem>
+                <MudItem xs="2"></MudItem>
+            </MudGrid>
+            <MudGrid>
+                <MudItem xs="2"></MudItem>
+                <MudItem xs="2">
                     <label for="Address" class="control-label">Address</label>
                     <input form="Address" class="form-control" @bind="@obj.Address" />
-                </div>
-                <div class="for-group">
+                </MudItem>
+                <MudItem xs="2">
                     <label for="Email" class="control-label">Email</label>
                     <input form="Email" class="form-control" @bind="@obj.Email" />
-                </div>
-                <div class="for-group">
+                </MudItem>
+                <MudItem xs="2">
                     <label for="PhoneNumber" class="control-label">Phone Number</label>
                     <input form="PhoneNumber" class="form-control" @bind="@obj.PhoneNumber" />
-                </div>
-                <div class="for-group">
+                </MudItem>
+                <MudItem xs="2">
                     <label for="Designation" class="control-label">Designation</label>
                     <input form="Designation" class="form-control" @bind="@obj.Designation" />
+                </MudItem>
+                <MudItem xs="2"></MudItem>
+            </MudGrid>
+            <MudGrid>
+                <div class="button-below">
+                    <input type="button" class="addemployee-save-btn" @onclick="@CreateNewEmployee" value="Add" />
+                    <input type="button" class="addemployee-cancel-btn" @onclick="@Cancel" value="Cancel" />
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="button-below">
-            <input type="button" class="addemployee-save-btn" @onclick="@CreateNewEmployee" value="Add" />
-           
-            <input type="button" class="addemployee-cancel-btn" @onclick="@Cancel" value="Cancel" />
-        </div>
-    </div>
-</form>
-
-
-
-
-@code {
-
-    Employee obj = new Employee();
-
-    protected async void CreateNewEmployee()
-    {
-        await employeeService.AddNewEmployee(obj);
-        NavigationManager.NavigateTo("Employees");
-    }
-    protected async void Cancel()
-    {
-        NavigationManager.NavigateTo("Employees");
-    }
-}
+            </MudGrid>
+        </MudGrid>
+    </MudMainContent>
+</MudLayout>

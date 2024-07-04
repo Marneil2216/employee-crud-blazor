@@ -1,5 +1,6 @@
 ﻿using EmployeeWebServer.Data;
 using Microsoft.AspNetCore.Components;
+using MudBlazor;
 
 namespace EmployeeWebServer.Components.Pages
 {
@@ -18,6 +19,7 @@ namespace EmployeeWebServer.Components.Pages
         {
             await employeeService.UpdateEmployeeDetails(obj);
             NavigationManager.NavigateTo("Employees");
+            Snackbar.Add("Updated Successfully", Severity.Success);
         }
         protected async void Cancel()
         {

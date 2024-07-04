@@ -1,9 +1,11 @@
 ﻿using EmployeeWebServer.Data;
+using MudBlazor;
 
 namespace EmployeeWebServer.Components.Pages
 {
     public partial class AddNewEmployee
     {
+        
         bool open= false;
         Employee obj = new Employee();
 
@@ -11,6 +13,7 @@ namespace EmployeeWebServer.Components.Pages
         {
             await employeeService.AddNewEmployee(obj);
             NavigationManager.NavigateTo("Employees");
+            Snackbar.Add("Added Successfully", Severity.Success);
         }
         protected async void Cancel()
         {

@@ -1,6 +1,6 @@
 ﻿using EmployeeWebServer.Data;
 using Microsoft.AspNetCore.Components;
-
+using MudBlazor;
 namespace EmployeeWebServer.Components.Pages
 {
     public partial class DeleteEmployee
@@ -18,6 +18,7 @@ namespace EmployeeWebServer.Components.Pages
         {
             await employeeService.DeleteEmployeeData(obj);
             NavigationManager.NavigateTo("Employees");
+            Snackbar.Add("Deleted Successfully", Severity.Error);
         }
         protected async void Cancel()
         {

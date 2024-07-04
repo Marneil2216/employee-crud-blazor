@@ -31,5 +31,10 @@
 }
 
 table {
-    margin: 30px auto;
+    margin: 0px auto;
+}
+
+thead {
+    background-color: #008fb3;
+    color:white;
 }

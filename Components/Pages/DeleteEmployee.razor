@@ -10,17 +10,28 @@
 
 @inject ISnackbar Snackbar
 
+<style>
+    .NavBar {
+        background-color: #006680;
+    }
+
+    .SideBar {
+        background-color: #008fb3;
+        color: white;
+    }
+</style>
+
 <MudLayout>
     <MudAppBar Elevation="1" Class="NavBar">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
-        <MudInputLabel>Delete Employee Record</MudInputLabel>
+        <MudInputLabel>Delete Employee</MudInputLabel>
         <MudSpacer />
         <MudIconButton Icon="@Icons.Material.Filled.Home" Href="/" Color="Color.Inherit" />
         <MudIconButton Icon="@Icons.Material.Filled.AccountCircle" Color="Color.Inherit" />
     </MudAppBar>
     <MudDrawer @bind-Open="@open" Elevation="1" Class="SideBar">
         <MudDrawerHeader>
-            <MudText Typo="Typo.h6">Delete Employee Record</MudText>
+            <MudText Typo="Typo.h6">Delete Employee</MudText>
         </MudDrawerHeader>
         <MudNavMenu>
             <MudNavLink Match="NavLinkMatch.All" Href="/">Home</MudNavLink>
@@ -30,7 +41,7 @@
         </MudNavMenu>
     </MudDrawer>
     <MudMainContent>
-        <MudGrid>
+        <MudGrid Style="margin:30px 0px 0px; overflow-y:hidden; overflow-x:hidden;">
             <MudItem xs="2"></MudItem>
             <MudItem xs="8">
                 <table class="table table-bordered table-striped mb-0">

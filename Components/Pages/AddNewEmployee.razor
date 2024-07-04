@@ -5,6 +5,17 @@
 @inject NavigationManager NavigationManager 
 @inject ISnackbar Snackbar
 
+<style>
+    .NavBar {
+        background-color: #006680;
+    }
+
+    .SideBar {
+        background-color: #008fb3;
+        color: white;
+    }
+</style>
+
 <MudLayout>
     <MudAppBar Elevation="1" Class="NavBar">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
@@ -25,7 +36,7 @@
         </MudNavMenu>
     </MudDrawer>
     <MudMainContent>
-        <MudGrid Style="margin:30px 0px 0px;">
+        <MudGrid Style="margin:30px 0px 0px; overflow-y:hidden; overflow-x:hidden;">
             <MudGrid Style="margin-bottom:10px;">
                 <MudItem xs="2"></MudItem>
                 <MudItem xs="2">
